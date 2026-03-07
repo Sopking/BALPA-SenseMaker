@@ -1,0 +1,1190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SenseMaker Workplace Stress Framework — BALPA easyJet Company Council</title>
+<style>
+  :root {
+    --orange: #FF5500;
+    --orange-light: #fff3ee;
+    --navy: #1a2744;
+    --navy-mid: #2d3f6b;
+    --grey: #4a5568;
+    --grey-light: #f7f8fa;
+    --border: #e2e8f0;
+    --green: #2d6a4f;
+    --green-light: #d8f3dc;
+    --amber: #b5540b;
+    --amber-light: #fff3cd;
+    --purple: #4a148c;
+    --purple-light: #f3e5f5;
+    --red: #c0392b;
+    --red-light: #fde8e8;
+    --blue: #1a6fa8;
+    --blue-light: #e8f4fd;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    font-size: 15px;
+    line-height: 1.7;
+    color: var(--grey);
+    background: white;
+  }
+  .cover {
+    background: var(--navy);
+    color: white;
+    padding: 60px 60px 48px;
+    position: relative;
+    overflow: hidden;
+  }
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: -80px; right: -80px;
+    width: 400px; height: 400px;
+    border-radius: 50%;
+    background: rgba(255,85,0,0.15);
+  }
+  .cover-tag {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--orange);
+    margin-bottom: 16px;
+  }
+  .cover h1 {
+    font-size: 36px;
+    font-weight: 700;
+    line-height: 1.2;
+    color: white;
+    margin-bottom: 12px;
+  }
+  .cover h1 span { color: var(--orange); }
+  .cover-sub {
+    font-size: 16px;
+    color: rgba(255,255,255,0.7);
+    max-width: 660px;
+    margin-bottom: 32px;
+  }
+  .cover-meta {
+    display: flex;
+    gap: 32px;
+    font-size: 13px;
+    color: rgba(255,255,255,0.5);
+    border-top: 1px solid rgba(255,255,255,0.1);
+    padding-top: 24px;
+    flex-wrap: wrap;
+  }
+  .cover-meta span strong { display: block; color: rgba(255,255,255,0.85); margin-bottom: 2px; }
+  .body-wrap { max-width: 940px; margin: 0 auto; padding: 48px 48px; }
+  h2 {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--navy);
+    margin: 52px 0 16px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--orange);
+  }
+  h3 {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--navy-mid);
+    margin: 28px 0 10px;
+  }
+  h4 { font-size: 14px; font-weight: 700; color: var(--navy); margin-bottom: 8px; }
+  p { margin-bottom: 14px; }
+
+  /* Alert / rationale boxes */
+  .box {
+    padding: 18px 22px;
+    margin: 20px 0;
+    border-radius: 0 6px 6px 0;
+  }
+  .box strong { display: block; margin-bottom: 6px; font-size: 12px; text-transform: uppercase; letter-spacing: 1px; }
+  .box-orange { background: var(--orange-light); border-left: 4px solid var(--orange); }
+  .box-orange strong { color: var(--orange); }
+  .box-red { background: var(--red-light); border-left: 4px solid var(--red); }
+  .box-red strong { color: var(--red); }
+  .box-blue { background: var(--blue-light); border-left: 4px solid var(--blue); }
+  .box-blue strong { color: var(--blue); }
+  .box-navy { background: rgba(26,39,68,0.06); border-left: 4px solid var(--navy); }
+  .box-navy strong { color: var(--navy); }
+
+  /* Data evidence panel */
+  .evidence-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin: 20px 0 28px;
+  }
+  .evidence-card {
+    background: var(--navy);
+    border-radius: 8px;
+    padding: 18px 16px;
+    color: white;
+  }
+  .evidence-card .stat {
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--orange);
+    line-height: 1;
+    margin-bottom: 6px;
+  }
+  .evidence-card .stat-label {
+    font-size: 12px;
+    color: rgba(255,255,255,0.7);
+    line-height: 1.4;
+  }
+  .evidence-card .hse-tag {
+    display: inline-block;
+    margin-top: 8px;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 2px 7px;
+    border-radius: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  /* Gap table */
+  .gap-table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 13px; }
+  .gap-table th { background: var(--navy); color: white; padding: 10px 14px; text-align: left; font-weight: 600; }
+  .gap-table td { padding: 10px 14px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  .gap-table tr:nth-child(even) td { background: var(--grey-light); }
+  .severity {
+    display: inline-block; padding: 2px 8px; border-radius: 10px;
+    font-size: 11px; font-weight: 700; text-transform: uppercase;
+  }
+  .sev-high { background: var(--red-light); color: var(--red); }
+  .sev-med { background: var(--amber-light); color: var(--amber); }
+
+  /* Prompt box */
+  .prompt-box {
+    background: var(--navy);
+    color: white;
+    padding: 28px 32px;
+    border-radius: 10px;
+    margin: 20px 0 28px;
+  }
+  .prompt-box .prompt-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--orange);
+    margin-bottom: 12px;
+    font-weight: 700;
+  }
+  .prompt-box p {
+    font-size: 18px;
+    line-height: 1.6;
+    color: white;
+    font-style: italic;
+    margin: 0;
+  }
+  .prompt-box .prompt-alt {
+    font-size: 14px;
+    color: rgba(255,255,255,0.65);
+    font-style: italic;
+    margin-top: 14px;
+    padding-top: 14px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+  }
+  .prompt-box .prompt-why {
+    font-size: 12px;
+    color: rgba(255,255,255,0.5);
+    font-style: normal;
+    margin-top: 12px;
+    line-height: 1.5;
+  }
+
+  /* Signifier section */
+  .sig-section { margin: 28px 0; }
+  .sig-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 14px;
+  }
+  .sig-type-badge {
+    font-size: 11px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 4px;
+  }
+  .badge-triad { background: var(--purple-light); color: var(--purple); }
+  .badge-dyad { background: var(--green-light); color: var(--green); }
+  .badge-stones { background: var(--amber-light); color: var(--amber); }
+  .badge-mcq { background: var(--grey-light); color: var(--navy); }
+  .sig-num {
+    width: 28px; height: 28px;
+    border-radius: 50%;
+    background: var(--navy-mid);
+    color: white;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 13px; font-weight: 700; flex-shrink: 0;
+  }
+  .sig-title { font-size: 15px; font-weight: 700; color: var(--navy); }
+
+  /* Triad */
+  .triad-card {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    overflow: hidden;
+    margin-bottom: 20px;
+  }
+  .triad-inner { display: grid; grid-template-columns: 1fr 200px; }
+  .triad-poles-list { padding: 18px 20px; }
+  .triad-pole-item {
+    display: flex;
+    gap: 10px;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border);
+  }
+  .triad-pole-item:last-child { border: none; }
+  .pole-label {
+    width: 26px; height: 26px;
+    border-radius: 50%;
+    background: var(--purple-light);
+    color: var(--purple);
+    font-weight: 800;
+    font-size: 12px;
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+  .pole-text { font-size: 13px; color: var(--navy-mid); line-height: 1.4; }
+  .pole-note { font-size: 11px; color: #a0aec0; margin-top: 3px; }
+  .triad-visual {
+    background: var(--purple-light);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    border-left: 1px solid #ddd;
+  }
+  .tri-svg { width: 120px; height: 104px; }
+  .triad-footer {
+    background: var(--grey-light);
+    padding: 10px 18px;
+    font-size: 11px;
+    color: var(--grey);
+    border-top: 1px solid var(--border);
+    display: flex;
+    gap: 6px;
+  }
+  .triad-footer .hse-tag { font-size: 10px; }
+
+  /* Dyad */
+  .dyad-card {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 14px;
+  }
+  .dyad-question { font-size: 14px; font-weight: 600; color: var(--navy); margin-bottom: 12px; }
+  .dyad-track-wrap { margin: 8px 0 6px; }
+  .dyad-track {
+    height: 8px;
+    background: linear-gradient(to right, #1a6fa8, #d8f3dc);
+    border-radius: 4px;
+    position: relative;
+  }
+  .dyad-labels { display: flex; justify-content: space-between; font-size: 12px; color: var(--grey); margin-top: 6px; }
+  .dyad-meta { font-size: 11px; color: #a0aec0; margin-top: 8px; }
+  .dyad-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+
+  /* Stones / MCQ */
+  .stones-options {
+    display: flex; flex-wrap: wrap; gap: 8px; margin: 10px 0;
+  }
+  .stone-chip {
+    padding: 6px 12px; border-radius: 20px;
+    font-size: 12px; border: 1px solid #e6b87a;
+    background: var(--amber-light); color: var(--amber);
+    cursor: pointer;
+  }
+  .mcq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin: 14px 0; }
+  .mcq-group h5 { font-size: 12px; font-weight: 700; color: var(--navy); margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.5px; }
+  .mcq-option {
+    font-size: 12px; padding: 5px 8px;
+    background: var(--grey-light); border-radius: 4px;
+    margin-bottom: 3px; color: var(--navy-mid);
+  }
+  .mcq-option::before { content: '○  '; font-size: 10px; color: #a0aec0; }
+
+  /* HSE mapping table */
+  .hse-table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 13px; }
+  .hse-table th { background: var(--navy); color: white; padding: 10px 14px; text-align: left; font-weight: 600; }
+  .hse-table td { padding: 10px 14px; border-bottom: 1px solid var(--border); vertical-align: top; line-height: 1.5; }
+  .hse-table tr:nth-child(even) td { background: var(--grey-light); }
+  .hse-badge { display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: 11px; font-weight: 700; white-space: nowrap; }
+  .hse-demands { background: #fde8e8; color: #c0392b; }
+  .hse-control { background: #e8f4fd; color: #1a6fa8; }
+  .hse-support { background: var(--green-light); color: var(--green); }
+  .hse-relationships { background: #f0e6ff; color: var(--purple); }
+  .hse-role { background: #fff3cd; color: #856404; }
+  .hse-change { background: #e2f0cb; color: #4a7c26; }
+
+  /* Patterns */
+  .pattern-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin: 20px 0; }
+  .pattern-card {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 16px 18px;
+  }
+  .pattern-card h4 { font-size: 13px; color: var(--navy); margin-bottom: 6px; }
+  .pattern-card .pattern-sigs { font-size: 11px; color: var(--orange); font-weight: 600; margin-bottom: 6px; }
+  .pattern-card p { font-size: 12px; color: var(--grey); margin: 0; line-height: 1.5; }
+
+  /* Engagement plan */
+  .phase { border: 1px solid var(--border); border-radius: 8px; margin-bottom: 14px; overflow: hidden; }
+  .phase-header {
+    background: var(--navy-mid); color: white; padding: 12px 18px;
+    display: flex; align-items: center; gap: 12px;
+  }
+  .phase-num {
+    width: 28px; height: 28px; border-radius: 50%; background: var(--orange);
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 13px; flex-shrink: 0;
+  }
+  .phase-header h4 { font-size: 15px; font-weight: 700; margin: 0; }
+  .phase-header span { font-size: 12px; opacity: 0.7; margin-left: auto; }
+  .phase-body { padding: 16px 18px; }
+  .phase-body ul { list-style: none; }
+  .phase-body li { padding: 5px 0 5px 18px; position: relative; font-size: 13px; color: var(--grey); }
+  .phase-body li::before { content: '→'; position: absolute; left: 0; color: var(--orange); }
+
+  /* Next steps checklist */
+  .checklist { list-style: none; margin: 16px 0; }
+  .checklist li {
+    padding: 9px 12px 9px 36px;
+    position: relative;
+    border-bottom: 1px solid var(--border);
+    font-size: 13px;
+  }
+  .checklist li:last-child { border: none; }
+  .checklist li::before {
+    content: '☐';
+    position: absolute; left: 10px;
+    color: var(--orange); font-size: 16px;
+  }
+  .checklist li strong { color: var(--navy); }
+
+  .footer {
+    margin-top: 60px; padding-top: 20px;
+    border-top: 1px solid var(--border);
+    font-size: 12px; color: #a0aec0; text-align: center;
+  }
+
+  @media print {
+    /* ── Page setup ─────────────────────────────────────── */
+    @page { size: A4; margin: 18mm 16mm 18mm 16mm; }
+
+    body { font-size: 11.5px; line-height: 1.55; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+
+    /* ── Cover page ─────────────────────────────────────── */
+    .cover {
+      page-break-after: always;
+      break-after: page;
+      padding: 48px 48px 36px;
+    }
+    .cover h1 { font-size: 26px; }
+    .cover-sub { font-size: 13px; }
+
+    /* ── Body wrapper ───────────────────────────────────── */
+    .body-wrap { max-width: 100%; padding: 0; }
+
+    /* ── Section headings — each h2 starts a new page ───── */
+    h2 {
+      page-break-before: always;
+      break-before: page;
+      page-break-after: avoid;
+      break-after: avoid;
+      font-size: 16px;
+      margin-top: 0;
+      padding-top: 4px;
+    }
+    /* Suppress page-break before the very first h2 (section 1 follows cover) */
+    h2:first-of-type {
+      page-break-before: avoid;
+      break-before: avoid;
+    }
+    h3 {
+      page-break-after: avoid;
+      break-after: avoid;
+      font-size: 13px;
+      margin-top: 18px;
+    }
+    h4 {
+      page-break-after: avoid;
+      break-after: avoid;
+    }
+
+    /* ── Keep blocks together ───────────────────────────── */
+    .box {
+      page-break-inside: avoid;
+      break-inside: avoid;
+      margin: 12px 0;
+      padding: 13px 16px;
+    }
+    .prompt-box {
+      page-break-inside: avoid;
+      break-inside: avoid;
+      padding: 20px 24px;
+    }
+    .sig-section {
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+
+    /* ── Evidence cards ──────────────────────────────────── */
+    .evidence-grid {
+      grid-template-columns: repeat(3, 1fr);
+      page-break-inside: avoid;
+      break-inside: avoid;
+      gap: 10px;
+      margin: 12px 0 18px;
+    }
+    .evidence-card {
+      page-break-inside: avoid;
+      break-inside: avoid;
+      padding: 12px 10px;
+    }
+    .evidence-card .stat { font-size: 22px; }
+
+    /* ── Triad cards ─────────────────────────────────────── */
+    .triad-card {
+      page-break-inside: avoid;
+      break-inside: avoid;
+      margin-bottom: 12px;
+    }
+    .triad-inner { grid-template-columns: 1fr; }
+    .triad-visual { display: none; }
+    .triad-poles-list { padding: 12px 14px; }
+    .triad-pole-item { padding: 7px 0; }
+
+    /* ── Dyad cards ──────────────────────────────────────── */
+    .dyad-grid {
+      grid-template-columns: 1fr;
+      gap: 10px;
+    }
+    .dyad-card {
+      page-break-inside: avoid;
+      break-inside: avoid;
+      padding: 12px 14px;
+      margin-bottom: 0;
+    }
+
+    /* ── Stone / MCQ sections ────────────────────────────── */
+    .stones-options {
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+    .mcq-grid { grid-template-columns: 1fr 1fr; gap: 12px; }
+
+    /* ── Tables ──────────────────────────────────────────── */
+    .gap-table, .hse-table { page-break-inside: auto; }
+    .gap-table tr, .hse-table tr {
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+    .gap-table th, .gap-table td,
+    .hse-table th, .hse-table td {
+      padding: 7px 10px;
+      font-size: 11px;
+    }
+
+    /* ── Pattern cards ───────────────────────────────────── */
+    .pattern-cards { grid-template-columns: 1fr 1fr; gap: 10px; }
+    .pattern-card {
+      page-break-inside: avoid;
+      break-inside: avoid;
+    }
+
+    /* ── Phase blocks ────────────────────────────────────── */
+    .phase {
+      page-break-inside: avoid;
+      break-inside: avoid;
+      margin-bottom: 10px;
+    }
+    .phase-header { padding: 9px 14px; }
+    .phase-body { padding: 11px 14px; }
+    .phase-body li { font-size: 11px; padding: 4px 0 4px 16px; }
+
+    /* ── Checklist ───────────────────────────────────────── */
+    .checklist li {
+      page-break-inside: avoid;
+      break-inside: avoid;
+      font-size: 11px;
+    }
+
+    /* ── Footer ──────────────────────────────────────────── */
+    .footer { margin-top: 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-tag">Project Atlas · BALPA easyJet Company Council · Safety Investigation</div>
+  <h1>SenseMaker<span>®</span> Engagement Framework<br>Workplace Stress Investigation</h1>
+  <p class="cover-sub">A complexity-informed micro-narrative design for surfacing the causes and experience of pilot workplace stress — built on easyJet's own data, the HSE Management Standards, and the existing Project Atlas gap analysis.</p>
+  <div class="cover-meta">
+    <span><strong>Purpose</strong>Stress investigation evidence gathering</span>
+    <span><strong>Method</strong>SenseMaker micro-narrative + self-signification</span>
+    <span><strong>Framework</strong>HSE Management Standards (6 domains)</span>
+    <span><strong>Related</strong>Project Atlas · De-Professionalisation Engagement</span>
+    <span><strong>Status</strong>Draft v2 — incorporating easyJet Info Return data</span>
+  </div>
+</div>
+
+<div class="body-wrap">
+
+<!-- SECTION 1: WHY SENSEMAKER -->
+<h2>1. Why SenseMaker for This Investigation</h2>
+
+<p>The Project Atlas gap analysis has already established that easyJet's stress management approach is fundamentally misdirected: it individualises an organisational problem, relies exclusively on lagging indicators, and has no systematic method for gathering pilot experience against the HSE Management Standards. The SenseMaker engagement fills that gap directly — providing the leading indicator, worker-led evidence base that easyJet's own approach lacks.</p>
+
+<div class="box box-orange">
+  <strong>Complexity Rationale</strong>
+  Workplace stress in aviation is a <em>Complex domain</em> phenomenon. Multiple stressors interact — roster design, management culture, role conflict, commercial pressure, fatigue — and their effects are only coherent in retrospect. easyJet's own data confirms this: 51% of mental health referrals cite a <em>combination of stressors</em>, not a single identifiable cause. SenseMaker, developed by Dave Snowden (also the creator of Cynefin), is specifically designed for this domain. It collects micro-narratives and then lets the <em>narrator interpret their own story</em> through structured signifiers. This prevents researcher bias, surfaces patterns that surveys cannot detect, and produces data in the exact format needed for the HSE Management Standards gap analysis.
+</div>
+
+<p>Critically, this engagement does something easyJet has never done: it puts the HSE Management Standards directly in the hands of pilots, letting them tell us which standard is failing them — in their own words, with their own meaning. The signifiers then quantify that self-interpretation across the whole workforce.</p>
+
+<!-- SECTION 2: WHAT EASYJET'S DATA ALREADY TELLS US -->
+<h2>2. What easyJet's Data Already Tells Us</h2>
+
+<p>The Info Return documents provide a baseline of lagging indicators. These are the signals the SenseMaker engagement must now explain — <em>why</em> these trends are occurring and <em>which</em> Management Standards are failing. They also establish the context that shapes which signifiers matter most.</p>
+
+<div class="evidence-grid">
+  <div class="evidence-card">
+    <div class="stat">+90%</div>
+    <div class="stat-label">Mental health LTA cases: 10 (2022) → 19 (2025). Current controls are not working.</div>
+    <div class="hse-tag" style="background:rgba(255,85,0,0.2); color:#FF5500;">All 6 Standards</div>
+  </div>
+  <div class="evidence-card">
+    <div class="stat">51%</div>
+    <div class="stat-label">MH referrals cite 'combination of stressors' — systemic, not individual, causation.</div>
+    <div class="hse-tag" style="background:rgba(255,85,0,0.2); color:#FF5500;">Demands · Control · Role</div>
+  </div>
+  <div class="evidence-card">
+    <div class="stat">4.9</div>
+    <div class="stat-label">Health &amp; wellbeing score (YVM survey) — below the midpoint of the scale.</div>
+    <div class="hse-tag" style="background:rgba(255,85,0,0.2); color:#FF5500;">Support · Relationships</div>
+  </div>
+  <div class="evidence-card">
+    <div class="stat">255</div>
+    <div class="stat-label">Captain bespoke roster requests in 2022 (vs 20 in 2021) — a 12× spike signalling unsustainable demands.</div>
+    <div class="hse-tag" style="background:rgba(255,85,0,0.2); color:#FF5500;">Demands · Control</div>
+  </div>
+  <div class="evidence-card">
+    <div class="stat">24</div>
+    <div class="stat-label">Formal bullying, harassment, stress &amp; role conflict incidents (2021–2025).</div>
+    <div class="hse-tag" style="background:rgba(255,85,0,0.2); color:#FF5500;">Relationships · Role</div>
+  </div>
+  <div class="evidence-card">
+    <div class="stat">Key−</div>
+    <div class="stat-label">Autonomy identified as a key <em>negative</em> detractor in YVM engagement survey — yet no action planned.</div>
+    <div class="hse-tag" style="background:rgba(255,85,0,0.2); color:#FF5500;">Control Standard</div>
+  </div>
+</div>
+
+<div class="box box-red">
+  <strong>The Core Problem the SenseMaker Engagement Must Address</strong>
+  easyJet knows stress is worsening (the trend data is unambiguous) but does not know <em>what is causing it</em> at the level of the HSE Management Standards. Their psychosocial risk assessment (IMS-FM014) does not map to the six standards, uses no validated stress-specific tool, and involves no pilot consultation. The SenseMaker engagement provides exactly the data that is missing: a pilot-generated, self-signified account of which standards are failing and why — in regulator-ready format.
+</div>
+
+<h3>Gaps the Engagement Must Fill</h3>
+<table class="gap-table">
+  <thead>
+    <tr><th>HSE Standard</th><th>What easyJet's data shows</th><th>What's missing</th><th>Priority</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><span class="hse-badge hse-demands">Demands</span></td>
+      <td>255 bespoke roster requests in 2022; 51% of MH cases cite combination of stressors; 90% rise in MH LTA</td>
+      <td>No measure of whether pilots can actually cope with demands. YVM is not a stress tool. No roster-specific demand data.</td>
+      <td><span class="severity sev-high">High</span></td>
+    </tr>
+    <tr>
+      <td><span class="hse-badge hse-control">Control</span></td>
+      <td>Autonomy identified as key negative detractor in YVM. No action plan to address it.</td>
+      <td>No evidence of how pilots experience control over their work. Roster request spike is a symptom, not a measure.</td>
+      <td><span class="severity sev-high">High</span></td>
+    </tr>
+    <tr>
+      <td><span class="hse-badge hse-support">Support</span></td>
+      <td>EAP, BUPA, peer support, OH all exist. But referrals are increasing — suggesting support is not preventing stress.</td>
+      <td>No data on whether pilots know support exists, can access it, or whether it's effective. Support provision ≠ support received.</td>
+      <td><span class="severity sev-high">High</span></td>
+    </tr>
+    <tr>
+      <td><span class="hse-badge hse-relationships">Relationships</span></td>
+      <td>24 formal incidents (bullying/harassment/stress/role conflict 2021–2025). Wellbeing score 4.9.</td>
+      <td>No systematic data on management culture, quality of relationships, or day-to-day treatment. Formal incidents are the tip of the iceberg.</td>
+      <td><span class="severity sev-high">High</span></td>
+    </tr>
+    <tr>
+      <td><span class="hse-badge hse-role">Role</span></td>
+      <td>3 formal role conflict cases. 51% cite combination of stressors — role conflict likely a component.</td>
+      <td>No measure of role clarity, conflicting expectations, or the tension between safety judgement and commercial pressure. Strong intersection with de-professionalisation investigation.</td>
+      <td><span class="severity sev-med">Medium–High</span></td>
+    </tr>
+    <tr>
+      <td><span class="hse-badge hse-change">Change</span></td>
+      <td>No specific data in Info Return. Roster request spike in 2022 may reflect change-driven disruption.</td>
+      <td>No data on how pilots experience organisational change — communication, consultation, or impact management.</td>
+      <td><span class="severity sev-med">Medium</span></td>
+    </tr>
+  </tbody>
+</table>
+
+<!-- SECTION 3: NARRATIVE PROMPT -->
+<h2>3. The Narrative Prompt</h2>
+
+<p>The prompt must be open enough not to pre-shape the story, while grounded in a specific experience rather than an abstract opinion. It should be accessible to positive as well as negative stories — a Safety-II design choice that makes participation feel less threatening and surfaces what conditions support coping as well as what degrades it.</p>
+
+<div class="prompt-box">
+  <div class="prompt-label">Primary Prompting Question — displayed to participants</div>
+  <p>"Think of a recent experience at work that affected how you felt — physically, mentally, or emotionally. It could be something that drained you, something that supported you, or something that changed how you feel about the job. In a short paragraph, tell us what happened."</p>
+  <div class="prompt-alt">Alternative / follow-up: "Tell us about a time when the way your work is organised made things harder — or easier — than they needed to be."</div>
+  <div class="prompt-why">Why this works: It does not lead toward a particular stressor. "Physically, mentally, or emotionally" invites the full range of stress manifestations. Grounded in a specific experience, not abstract opinion. The alternative prompt targets the systemic/organisational dimension directly — useful for a second story or follow-up engagement. Together they map onto the HSE principle that stress is a management problem, not an individual resilience problem.</div>
+</div>
+
+<div class="box box-navy">
+  <strong>Context Statement — shown before the prompt</strong>
+  BALPA is collecting short stories about recent working experiences. There are no right or wrong answers — we want to understand what everyday working life at easyJet is actually like for pilots. Your story will be anonymised. This process is completely independent of easyJet's own systems, and your responses will never be shared with easyJet in a form that could identify you. This is a BALPA safety investigation under the Safety Representatives and Safety Committees Regulations 1977.
+</div>
+
+<!-- SECTION 4: SIGNIFICATION FRAMEWORK -->
+<h2>4. The Signification Framework</h2>
+
+<p>Signifiers are the self-interpretation instruments that participants use to index their own story immediately after telling it. The design below has five triads, seven dyads, two canvas placements, and a multiple-choice demographic layer. Total completion time: 8–12 minutes per story. Multiple stories are encouraged.</p>
+
+<p>The key design constraint: every signifier must be <em>genuinely ambiguous</em>. If a pole feels obviously correct to most respondents, it is leading — and leading signifiers produce noise, not signal. Participants are locating meaning, not rating satisfaction.</p>
+
+<!-- TRIADS -->
+<h3>Triads (5)</h3>
+<p style="font-size:13px; color:var(--grey); margin-bottom: 18px;">Participants place a dot inside a triangle to show where their story sits relative to three poles. All three poles must be plausible descriptions of any story.</p>
+
+<!-- Triad 1 -->
+<div class="sig-section">
+  <div class="sig-header">
+    <div class="sig-num">1</div>
+    <span class="sig-type-badge badge-triad">Triad</span>
+    <span class="sig-title">What was the main source of pressure in this story?</span>
+  </div>
+  <div class="triad-card">
+    <div class="triad-inner">
+      <div class="triad-poles-list">
+        <div class="triad-pole-item">
+          <div class="pole-label">A</div>
+          <div><div class="pole-text">The demands of the job itself</div><div class="pole-note">Workload, pace, hours, roster, duty patterns</div></div>
+        </div>
+        <div class="triad-pole-item">
+          <div class="pole-label">B</div>
+          <div><div class="pole-text">How I was managed or supported — or not</div><div class="pole-note">Management behaviour, decisions made about me, access to support</div></div>
+        </div>
+        <div class="triad-pole-item">
+          <div class="pole-label">C</div>
+          <div><div class="pole-text">Uncertainty or change in how things are done</div><div class="pole-note">Policy changes, restructuring, unclear expectations, conflicting demands</div></div>
+        </div>
+      </div>
+      <div class="triad-visual">
+        <svg class="tri-svg" viewBox="0 0 120 104"><polygon points="60,4 116,100 4,100" fill="rgba(74,20,140,0.10)" stroke="rgba(74,20,140,0.4)" stroke-width="1.5"/><text x="60" y="94" text-anchor="middle" font-size="11" fill="#4a148c" font-weight="700">A</text><text x="14" y="102" text-anchor="middle" font-size="11" fill="#4a148c" font-weight="700">B</text><text x="106" y="102" text-anchor="middle" font-size="11" fill="#4a148c" font-weight="700">C</text></svg>
+        <div style="font-size:10px; color:#9b59b6; text-align:center; margin-top:4px;">Place dot inside triangle</div>
+      </div>
+    </div>
+    <div class="triad-footer">
+      <strong>Maps to:</strong>&nbsp;
+      <span class="hse-badge hse-demands">Demands</span> &nbsp;
+      <span class="hse-badge hse-support">Support</span> &nbsp;
+      <span class="hse-badge hse-relationships">Relationships</span> &nbsp;
+      <span class="hse-badge hse-change">Change</span> &nbsp;
+      <span class="hse-badge hse-role">Role</span>
+      <span style="margin-left:auto; font-style:italic;">First-level Management Standard classifier</span>
+    </div>
+  </div>
+</div>
+
+<!-- Triad 2 -->
+<div class="sig-section">
+  <div class="sig-header">
+    <div class="sig-num">2</div>
+    <span class="sig-type-badge badge-triad">Triad</span>
+    <span class="sig-title">What could I do about it?</span>
+  </div>
+  <div class="triad-card">
+    <div class="triad-inner">
+      <div class="triad-poles-list">
+        <div class="triad-pole-item">
+          <div class="pole-label">A</div>
+          <div><div class="pole-text">I had some control and could influence what happened</div></div>
+        </div>
+        <div class="triad-pole-item">
+          <div class="pole-label">B</div>
+          <div><div class="pole-text">I had no control — I just had to absorb it</div></div>
+        </div>
+        <div class="triad-pole-item">
+          <div class="pole-label">C</div>
+          <div><div class="pole-text">I could have done something, but it wasn't worth the risk</div><div class="pole-note">The chilling effect — theoretical agency suppressed by culture</div></div>
+        </div>
+      </div>
+      <div class="triad-visual">
+        <svg class="tri-svg" viewBox="0 0 120 104"><polygon points="60,4 116,100 4,100" fill="rgba(74,20,140,0.10)" stroke="rgba(74,20,140,0.4)" stroke-width="1.5"/></svg>
+      </div>
+    </div>
+    <div class="triad-footer">
+      <strong>Maps to:</strong>&nbsp;
+      <span class="hse-badge hse-control">Control Standard</span>
+      <span style="margin-left:auto; font-style:italic;">Corner C is the critical safety culture signal — theoretical agency suppressed by fear</span>
+    </div>
+  </div>
+</div>
+
+<!-- Triad 3 -->
+<div class="sig-section">
+  <div class="sig-header">
+    <div class="sig-num">3</div>
+    <span class="sig-type-badge badge-triad">Triad</span>
+    <span class="sig-title">Where did the support come from?</span>
+  </div>
+  <div class="triad-card">
+    <div class="triad-inner">
+      <div class="triad-poles-list">
+        <div class="triad-pole-item">
+          <div class="pole-label">A</div>
+          <div><div class="pole-text">From my colleagues</div></div>
+        </div>
+        <div class="triad-pole-item">
+          <div class="pole-label">B</div>
+          <div><div class="pole-text">From the company or management</div></div>
+        </div>
+        <div class="triad-pole-item">
+          <div class="pole-label">C</div>
+          <div><div class="pole-text">I dealt with it on my own — there wasn't really any support</div></div>
+        </div>
+      </div>
+      <div class="triad-visual">
+        <svg class="tri-svg" viewBox="0 0 120 104"><polygon points="60,4 116,100 4,100" fill="rgba(74,20,140,0.10)" stroke="rgba(74,20,140,0.4)" stroke-width="1.5"/></svg>
+      </div>
+    </div>
+    <div class="triad-footer">
+      <strong>Maps to:</strong>&nbsp;
+      <span class="hse-badge hse-support">Support Standard</span>
+      <span style="margin-left:auto; font-style:italic;">B empty + A full = informal networks compensating for formal system failure. C dominant = complete breakdown.</span>
+    </div>
+  </div>
+</div>
+
+<!-- Triad 4 -->
+<div class="sig-section">
+  <div class="sig-header">
+    <div class="sig-num">4</div>
+    <span class="sig-type-badge badge-triad">Triad</span>
+    <span class="sig-title">What effect did this have?</span>
+  </div>
+  <div class="triad-card">
+    <div class="triad-inner">
+      <div class="triad-poles-list">
+        <div class="triad-pole-item">
+          <div class="pole-label">A</div>
+          <div><div class="pole-text">It affected my wellbeing — sleep, mood, energy, health</div></div>
+        </div>
+        <div class="triad-pole-item">
+          <div class="pole-label">B</div>
+          <div><div class="pole-text">It affected my performance or how I do my job</div><div class="pole-note" style="color:#c0392b;">Safety-critical signal: stress degrading operational performance</div></div>
+        </div>
+        <div class="triad-pole-item">
+          <div class="pole-label">C</div>
+          <div><div class="pole-text">It affected my relationships at home or with colleagues</div></div>
+        </div>
+      </div>
+      <div class="triad-visual">
+        <svg class="tri-svg" viewBox="0 0 120 104"><polygon points="60,4 116,100 4,100" fill="rgba(74,20,140,0.10)" stroke="rgba(74,20,140,0.4)" stroke-width="1.5"/></svg>
+      </div>
+    </div>
+    <div class="triad-footer">
+      <strong>Cross-references:</strong>&nbsp;De-Professionalisation engagement (Corner B)
+      <span style="margin-left:auto; font-style:italic;">Corner B connects occupational stress directly to the CAA safety case</span>
+    </div>
+  </div>
+</div>
+
+<!-- Triad 5 -->
+<div class="sig-section">
+  <div class="sig-header">
+    <div class="sig-num">5</div>
+    <span class="sig-type-badge badge-triad">Triad</span>
+    <span class="sig-title">What does this story say about how easyJet manages stress?</span>
+  </div>
+  <div class="triad-card">
+    <div class="triad-inner">
+      <div class="triad-poles-list">
+        <div class="triad-pole-item">
+          <div class="pole-label">A</div>
+          <div><div class="pole-text">The company takes stress seriously and acts on it</div></div>
+        </div>
+        <div class="triad-pole-item">
+          <div class="pole-label">B</div>
+          <div><div class="pole-text">The company acknowledges stress but doesn't do enough about it</div></div>
+        </div>
+        <div class="triad-pole-item">
+          <div class="pole-label">C</div>
+          <div><div class="pole-text">The company doesn't recognise this as a stress issue at all</div></div>
+        </div>
+      </div>
+      <div class="triad-visual">
+        <svg class="tri-svg" viewBox="0 0 120 104"><polygon points="60,4 116,100 4,100" fill="rgba(74,20,140,0.10)" stroke="rgba(74,20,140,0.4)" stroke-width="1.5"/></svg>
+      </div>
+    </div>
+    <div class="triad-footer">
+      <strong>Evidential use:</strong>&nbsp;B and C clustering = employer awareness of risk without adequate action = MHSWR 1999 Reg 3 breach
+      <span style="margin-left:auto; font-style:italic;">Most powerful single signifier for HSE/CAA regulatory complaint</span>
+    </div>
+  </div>
+</div>
+
+<!-- DYADS -->
+<h3>Dyads (7) — one per HSE standard + two aviation-specific additions</h3>
+<p style="font-size:13px; color:var(--grey); margin-bottom:16px;">Each dyad is a slider between two poles. Participants locate where their story sits — not how good or bad things are. The seven dyads map one-to-one to the six HSE Management Standards plus a recovery/rest dimension critical to aviation.</p>
+
+<div class="dyad-grid">
+
+  <div class="dyad-card">
+    <div class="dyad-question">Dyad 1 — <span class="hse-badge hse-demands">Demands</span></div>
+    <p style="font-size:13px; color:var(--grey); margin-bottom:6px;">"In this situation, the demands on me were:"</p>
+    <div class="dyad-track-wrap"><div class="dyad-track"></div></div>
+    <div class="dyad-labels"><span>Manageable — I could cope</span><span>Overwhelming — I couldn't cope</span></div>
+    <div class="dyad-meta">HSE benchmark: employees should indicate they can cope. Data shows 90% MH LTA increase — this dyad quantifies whether demands are exceeding capacity.</div>
+  </div>
+
+  <div class="dyad-card">
+    <div class="dyad-question">Dyad 2 — <span class="hse-badge hse-control">Control</span></div>
+    <p style="font-size:13px; color:var(--grey); margin-bottom:6px;">"In this situation, my ability to influence what happened was:"</p>
+    <div class="dyad-track-wrap"><div class="dyad-track"></div></div>
+    <div class="dyad-labels"><span>I had real say and could make choices</span><span>I had no say — decisions were made for me</span></div>
+    <div class="dyad-meta">Autonomy is already the key negative detractor in YVM. This dyad quantifies the experience narrative context has identified. Karasek demand-control model: high demands + low control = primary stress mechanism.</div>
+  </div>
+
+  <div class="dyad-card">
+    <div class="dyad-question">Dyad 3 — <span class="hse-badge hse-support">Support</span></div>
+    <p style="font-size:13px; color:var(--grey); margin-bottom:6px;">"The support available to me in this situation was:"</p>
+    <div class="dyad-track-wrap"><div class="dyad-track"></div></div>
+    <div class="dyad-labels"><span>Excellent — I knew where to turn and got help</span><span>Non-existent — I was on my own</span></div>
+    <div class="dyad-meta">easyJet claims extensive support services. This dyad tests whether pilots experience them as accessible and effective — or whether provision and receipt are disconnected.</div>
+  </div>
+
+  <div class="dyad-card">
+    <div class="dyad-question">Dyad 4 — <span class="hse-badge hse-relationships">Relationships</span></div>
+    <p style="font-size:13px; color:var(--grey); margin-bottom:6px;">"The working relationships involved in this story were:"</p>
+    <div class="dyad-track-wrap"><div class="dyad-track"></div></div>
+    <div class="dyad-labels"><span>Positive and respectful</span><span>Difficult, hostile, or dismissive</span></div>
+    <div class="dyad-meta">24 formal incidents are the visible tip. This dyad surfaces the submerged experience — day-to-day culture that never reaches formal reporting, including management behaviour and bullying below the formal threshold.</div>
+  </div>
+
+  <div class="dyad-card">
+    <div class="dyad-question">Dyad 5 — <span class="hse-badge hse-role">Role Clarity</span></div>
+    <p style="font-size:13px; color:var(--grey); margin-bottom:6px;">"In this situation, what was expected of me was:"</p>
+    <div class="dyad-track-wrap"><div class="dyad-track"></div></div>
+    <div class="dyad-labels"><span>Clear — I knew exactly what I should do</span><span>Unclear or contradictory — caught between competing expectations</span></div>
+    <div class="dyad-meta">Captures the tension between safety judgement, commercial pressure, and management expectation — the core intersection with the de-professionalisation investigation.</div>
+  </div>
+
+  <div class="dyad-card">
+    <div class="dyad-question">Dyad 6 — <span class="hse-badge hse-change">Change</span></div>
+    <p style="font-size:13px; color:var(--grey); margin-bottom:6px;">"How well was any change involved in this story communicated and managed?"</p>
+    <div class="dyad-track-wrap"><div class="dyad-track"></div></div>
+    <div class="dyad-labels"><span>Well communicated — I understood why and what it meant for me</span><span>Poorly managed — I was left in the dark</span></div>
+    <div class="dyad-meta">Only displayed if the narrator's story involves organisational change — or left optional for narrators to self-select. The 2022 roster request spike may indicate change-driven disruption that this dyad can now surface.</div>
+  </div>
+
+  <div class="dyad-card" style="border-color: var(--orange); border-width: 2px;">
+    <div class="dyad-question">Dyad 7 — <span style="background:#ffeaa7; color:#856404; font-size:11px; font-weight:700; padding:2px 8px; border-radius:12px;">Aviation-Specific: Recovery</span></div>
+    <p style="font-size:13px; color:var(--grey); margin-bottom:6px;">"After this experience, my ability to recover was:"</p>
+    <div class="dyad-track-wrap"><div class="dyad-track"></div></div>
+    <div class="dyad-labels"><span>I had enough time and space to recover properly</span><span>I went straight back into it with no recovery</span></div>
+    <div class="dyad-meta"><strong>This is the aviation-specific addition.</strong> Not a direct Management Standard, but critical: cumulative stress and fatigue interact in ways specific to high-tempo short-haul operations. Cross-referenced with FTL/rostering data, this connects the stress investigation to the safety case.</div>
+  </div>
+
+</div>
+
+<!-- STONES / CANVAS -->
+<h3>Stone Placements (2)</h3>
+
+<div class="sig-section">
+  <div class="sig-header">
+    <div class="sig-num" style="background: var(--amber);">S1</div>
+    <span class="sig-type-badge badge-stones">Canvas Placement</span>
+    <span class="sig-title">Who was most affected by this story?</span>
+  </div>
+  <div style="border:1px solid var(--border); border-radius:8px; padding:18px 20px; margin-bottom:16px;">
+    <p style="font-size:13px; margin-bottom:10px;">Participants place a stone on a triangular canvas with three labelled regions:</p>
+    <div class="stones-options">
+      <div class="stone-chip" style="font-size:13px; padding:8px 16px;">Me personally</div>
+      <div class="stone-chip" style="font-size:13px; padding:8px 16px;">My family or home life</div>
+      <div class="stone-chip" style="font-size:13px; padding:8px 16px;">My colleagues or the operation</div>
+    </div>
+    <p style="font-size:11px; color:#a0aec0; margin-top:10px; margin-bottom:0;">Family/home life placement evidences the reach of workplace stress beyond the workplace — directly relevant to severity assessment under HSWA 1974 s.2 and the <em>Hatton</em> principles. Operational impact placement links to the CAA safety case.</p>
+  </div>
+</div>
+
+<div class="sig-section">
+  <div class="sig-header">
+    <div class="sig-num" style="background: var(--amber);">S2</div>
+    <span class="sig-type-badge badge-stones">Canvas Placement</span>
+    <span class="sig-title">When did this happen?</span>
+  </div>
+  <div style="border:1px solid var(--border); border-radius:8px; padding:18px 20px; margin-bottom:20px;">
+    <p style="font-size:13px; margin-bottom:10px;">A timeline slider: <strong>Long ago</strong> ←——→ <strong>Very recently</strong></p>
+    <p style="font-size:11px; color:#a0aec0; margin:0;">Temporal distribution reveals whether stress is worsening (stories clustering toward recent) or reflects historical conditions. Combined with length-of-service demographic data, this tracks whether the working environment has changed over time.</p>
+  </div>
+</div>
+
+<!-- MCQ -->
+<h3>Multiple Choice — Demographics and Context</h3>
+
+<div class="sig-section">
+  <div class="sig-header">
+    <div class="sig-num" style="background: var(--navy-mid);">M</div>
+    <span class="sig-type-badge badge-mcq">Multiple Choice</span>
+    <span class="sig-title">Background context (non-identifying)</span>
+  </div>
+  <div style="border:1px solid var(--border); border-radius:8px; padding:18px 20px; margin-bottom:16px;">
+    <div class="mcq-grid">
+      <div class="mcq-group">
+        <h5>Rank</h5>
+        <div class="mcq-option">Captain</div>
+        <div class="mcq-option">First Officer</div>
+        <div class="mcq-option">Second Officer</div>
+      </div>
+      <div class="mcq-group">
+        <h5>Contract type</h5>
+        <div class="mcq-option">Permanent employed</div>
+        <div class="mcq-option">Fixed-term contract</div>
+        <div class="mcq-option">Agency / zero hours</div>
+      </div>
+      <div class="mcq-group">
+        <h5>Length of service</h5>
+        <div class="mcq-option">Less than 2 years</div>
+        <div class="mcq-option">2–5 years</div>
+        <div class="mcq-option">5–10 years</div>
+        <div class="mcq-option">10–20 years</div>
+        <div class="mcq-option">More than 20 years</div>
+      </div>
+      <div class="mcq-group">
+        <h5>Home base</h5>
+        <div class="mcq-option">LGW / STN / LTN / BRS / EDI / BFS / MAN / Other UK / Non-UK</div>
+      </div>
+      <div class="mcq-group">
+        <h5>Work pattern</h5>
+        <div class="mcq-option">Full-time</div>
+        <div class="mcq-option">Part-time</div>
+        <div class="mcq-option">Variable</div>
+      </div>
+      <div class="mcq-group">
+        <h5>How often does this kind of thing happen?</h5>
+        <div class="mcq-option">This was a one-off</div>
+        <div class="mcq-option">It happens occasionally</div>
+        <div class="mcq-option">It happens regularly</div>
+        <div class="mcq-option">It's constant</div>
+      </div>
+    </div>
+
+    <div style="margin-top:16px; padding-top:16px; border-top:1px solid var(--border);">
+      <h5 style="font-size:12px; font-weight:700; color:var(--navy); margin-bottom:8px; text-transform:uppercase; letter-spacing:0.5px;">Health Impact (Yes / No / Not sure)</h5>
+      <div style="display:flex; gap:16px; flex-wrap:wrap;">
+        <div class="mcq-option" style="flex:1; min-width:180px;">Has this affected your physical health?</div>
+        <div class="mcq-option" style="flex:1; min-width:180px;">Has this affected your mental health?</div>
+      </div>
+    </div>
+
+    <div style="margin-top:14px; padding-top:14px; border-top:1px solid var(--border);">
+      <h5 style="font-size:12px; font-weight:700; color:var(--navy); margin-bottom:8px; text-transform:uppercase; letter-spacing:0.5px;">Reporting (multi-select)</h5>
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:8px;">
+        <div class="mcq-option">Yes — reported to BALPA</div>
+        <div class="mcq-option">Yes — reported to the company</div>
+        <div class="mcq-option">Yes — reported to both</div>
+        <div class="mcq-option">No — didn't report it</div>
+      </div>
+      <div style="margin-top:8px; font-size:12px; color:var(--grey); font-style:italic;">If didn't report — why not? (multi-select):<br>Didn't think it would change anything / Worried about consequences / Didn't know how / Didn't think it was serious enough / Too tired or drained to bother</div>
+    </div>
+
+    <div style="margin-top:14px; padding-top:14px; border-top:1px solid var(--border);">
+      <h5 style="font-size:12px; font-weight:700; color:var(--navy); margin-bottom:8px; text-transform:uppercase; letter-spacing:0.5px;">How you felt — pick 3 (multi-select)</h5>
+      <div class="stones-options" style="gap:6px;">
+        <div class="stone-chip" style="background:#fde8e8; border-color:#f5a5a5; color:#c0392b;">Exhausted</div>
+        <div class="stone-chip" style="background:#fde8e8; border-color:#f5a5a5; color:#c0392b;">Frustrated</div>
+        <div class="stone-chip" style="background:#fde8e8; border-color:#f5a5a5; color:#c0392b;">Anxious</div>
+        <div class="stone-chip" style="background:#fde8e8; border-color:#f5a5a5; color:#c0392b;">Angry</div>
+        <div class="stone-chip" style="background:#fde8e8; border-color:#f5a5a5; color:#c0392b;">Resigned</div>
+        <div class="stone-chip" style="background:#fde8e8; border-color:#f5a5a5; color:#c0392b;">Overwhelmed</div>
+        <div class="stone-chip" style="background:#fde8e8; border-color:#f5a5a5; color:#c0392b;">Ignored</div>
+        <div class="stone-chip" style="background:#fde8e8; border-color:#f5a5a5; color:#c0392b;">Fearful</div>
+        <div class="stone-chip" style="background:var(--green-light); border-color:#95d5aa; color:var(--green);">Supported</div>
+        <div class="stone-chip" style="background:var(--green-light); border-color:#95d5aa; color:var(--green);">Motivated</div>
+        <div class="stone-chip" style="background:var(--green-light); border-color:#95d5aa; color:var(--green);">Valued</div>
+        <div class="stone-chip">Indifferent</div>
+      </div>
+    </div>
+
+    <div style="margin-top:14px; padding-top:14px; border-top:1px solid var(--border);">
+      <h5 style="font-size:12px; font-weight:700; color:var(--navy); margin-bottom:6px; text-transform:uppercase; letter-spacing:0.5px;">Who should hear this story? (multi-select)</h5>
+      <div class="stones-options" style="gap:6px;">
+        <div class="stone-chip">BALPA</div><div class="stone-chip">easyJet management</div><div class="stone-chip">Flight Ops</div><div class="stone-chip">Rostering</div><div class="stone-chip">HR</div><div class="stone-chip">Occupational Health</div><div class="stone-chip" style="background:var(--red-light); border-color:#f5a5a5; color:var(--red);">HSE</div><div class="stone-chip" style="background:var(--red-light); border-color:#f5a5a5; color:var(--red);">CAA</div><div class="stone-chip">Other pilots</div><div class="stone-chip">No one</div>
+      </div>
+      <p style="font-size:11px; color:#a0aec0; margin-top:8px; margin-bottom:0;">Narrators directing stories to HSE/CAA is itself evidentially significant — it signals perceived employer failure at a threshold where pilots believe regulatory intervention is warranted.</p>
+    </div>
+  </div>
+</div>
+
+<!-- OPTIONAL FREE TEXT -->
+<div class="box box-navy" style="margin-top:0;">
+  <strong>Optional Free-Text Follow-Up</strong>
+  <strong style="font-size:14px; color:var(--navy); display:inline;">"Is there anything else you want to add that the questions didn't capture?"</strong>
+</div>
+
+<!-- SECTION 5: ANALYSIS -->
+<h2>5. Analysis Framework — Connecting to the Gap Analysis</h2>
+
+<p>The analysis has three layers that feed directly into the Project Atlas gap analysis, the HSG245 investigation, and the formal representations to easyJet management.</p>
+
+<h3>Primary Analysis: HSE Management Standards Mapping</h3>
+
+<table class="hse-table">
+  <thead>
+    <tr><th>HSE Standard</th><th>Primary Signifiers</th><th>Deficiency Pattern to Look For</th><th>Legal Significance</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><span class="hse-badge hse-demands">Demands</span></td>
+      <td>Triad 1 Corner A + Dyad 1 (overwhelming) + MCQ frequency (regular/constant)</td>
+      <td>Stories dominated by workload/pace/roster clustering with high overwhelm scores + chronic frequency</td>
+      <td>MHSWR Reg 3 breach — demands risk not adequately assessed or controlled. Roster request spike (255 in 2022) should show up here.</td>
+    </tr>
+    <tr>
+      <td><span class="hse-badge hse-control">Control</span></td>
+      <td>Triad 2 (Corners B and C) + Dyad 2 (no say end)</td>
+      <td>Corner C clustering (could act but won't — chilling effect) combined with no-say dyad scores. YVM autonomy finding should be confirmed and contextualised here.</td>
+      <td>HSE standard requires say over pace/pattern of work. Triad 2C is the most legally significant signal: formal agency denied by informal culture.</td>
+    </tr>
+    <tr>
+      <td><span class="hse-badge hse-support">Support</span></td>
+      <td>Triad 3 (Corners A and C) + Dyad 3 (non-existent) + MCQ didn't report</td>
+      <td>Company support (B) empty; colleague support (A) dominant or no support (C). Cross with "didn't report because didn't think it would change anything."</td>
+      <td>easyJet's EAP/BUPA/OH provision is not being experienced as accessible or effective. Provision ≠ receipt. Growing MH referral trend is the lagging signal.</td>
+    </tr>
+    <tr>
+      <td><span class="hse-badge hse-relationships">Relationships</span></td>
+      <td>Dyad 4 (hostile/dismissive end) + MCQ emotion (frustrated, angry, ignored, fearful) + Triad 2 Corner C</td>
+      <td>Hostile relationship scores combined with fear-suppressed agency. Chilling effect (Triad 2C) is often a relationship/culture phenomenon, not just an individual decision.</td>
+      <td>24 formal incidents are the visible layer. Narrative data surfaces the informal layer — the experience that never becomes a formal case. Particularly relevant for bullying sub-threshold behaviour.</td>
+    </tr>
+    <tr>
+      <td><span class="hse-badge hse-role">Role</span></td>
+      <td>Dyad 5 (unclear/contradictory end) + Triad 1 mixed positioning (story spans multiple causes)</td>
+      <td>Role clarity deficit: pilots caught between safety judgement, commercial pressure, and management expectation simultaneously. Strong intersection with de-professionalisation data.</td>
+      <td>3 formal role conflict cases are the visible tip. Role ambiguity in safety-critical environments is both an HSE stress risk and a CAA safety management concern.</td>
+    </tr>
+    <tr>
+      <td><span class="hse-badge hse-change">Change</span></td>
+      <td>Triad 1 Corner C + Dyad 6 (poorly managed end) + Stone S2 (recent temporal placement)</td>
+      <td>Recent stories clustering around poorly managed change. Combined with 2022 roster spike, tests whether operational restructuring drove the MH referral increase.</td>
+      <td>Employer duty to consult and manage change impact. If trend data (MH referrals rising 2022–2025) correlates with poorly-managed change stories, this provides causal linkage for formal representations.</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>Composite Pattern Detection</h3>
+<p style="font-size:13px; color:var(--grey);">Cross-referencing signifiers reveals the systemic dynamics that individual standards cannot capture alone.</p>
+
+<div class="pattern-cards">
+  <div class="pattern-card">
+    <h4>The High-Demand / Low-Control Pattern</h4>
+    <div class="pattern-sigs">Dyad 1 (overwhelming) + Dyad 2 (no say) + Triad 2 Corner B</div>
+    <p>The Karasek demand-control model: this is the primary occupational stress mechanism. The most directly actionable pattern under the Management Standards. easyJet's autonomy data already suggests this — the SenseMaker data will quantify it in narrative context.</p>
+  </div>
+  <div class="pattern-card">
+    <h4>The Silent Suffering Pattern</h4>
+    <div class="pattern-sigs">MCQ didn't report + "too tired to bother" + Triad 2 Corner C</div>
+    <p>Stress becomes self-reinforcing: too drained to engage with the systems that might help. This is the point where individual harm becomes organisational risk — pilots who can't engage with reporting systems are also unlikely to report safety concerns.</p>
+  </div>
+  <div class="pattern-card">
+    <h4>The Unsupported Pilot Pattern</h4>
+    <div class="pattern-sigs">Triad 3 Corner C + Dyad 3 (non-existent) + MCQ "didn't think it would change anything"</div>
+    <p>Complete support system failure. Distinguishes between pilots who rely on colleagues (compensating informally) and those who are genuinely isolated. The 51% "combination of stressors" MH data likely includes many pilots in this pattern.</p>
+  </div>
+  <div class="pattern-card">
+    <h4>The Spillover Pattern</h4>
+    <div class="pattern-sigs">Stone S1 (family/home) + Triad 4 Corner C + MCQ affected mental health</div>
+    <p>Stress not contained to the workplace. Important for severity assessment under HSWA and the <em>Hatton</em> foreseeability principles. Also relevant to the roster request spike — bespoke requests are the formal expression of spillover.</p>
+  </div>
+  <div class="pattern-card">
+    <h4>The Operational Safety Pattern</h4>
+    <div class="pattern-sigs">Triad 4 Corner B + Dyad 1 (overwhelming) + Dyad 7 (no recovery)</div>
+    <p>The safety-critical signal: stress degrading operational performance. Cross-referencing with de-professionalisation data connects occupational stress to the CAA safety case. This is the pattern that puts this investigation squarely within CAA as well as HSE jurisdiction.</p>
+  </div>
+  <div class="pattern-card">
+    <h4>The Systemic Failure Pattern</h4>
+    <div class="pattern-sigs">Triad 5 Corner C + MCQ frequency (constant) + MCQ "who should hear: HSE/CAA"</div>
+    <p>The employer has fundamentally failed to manage stress — pilots don't just want change, they believe external intervention is necessary. Narrators self-directing to HSE/CAA is the strongest single indicator for regulatory escalation.</p>
+  </div>
+</div>
+
+<!-- SECTION 6: ENGAGEMENT METHODOLOGY -->
+<h2>6. Engagement Methodology</h2>
+
+<div class="box box-red">
+  <strong>Critical Design Principle — Independence</strong>
+  The data collection must be entirely independent of easyJet's systems. Any perception that easyJet management could access individual responses — even if untrue — will suppress participation and bias the data toward what pilots think is safe to say rather than what is true. The investigation's credibility depends on this independence being <em>visible</em>, not just actual. This is especially important given that the "worried about consequences" response option in the MCQ will capture exactly this fear.
+</div>
+
+<div class="phase"><div class="phase-header"><div class="phase-num">1</div><h4>Platform and Setup</h4><span>Weeks 1–2</span></div><div class="phase-body"><ul><li>Select a platform fully independent of easyJet IT: SenseMaker app (Cognitive Edge / The Cynefin Co.), a BALPA-hosted secure web form, or a purpose-built simple web tool replicating the signifier interactions.</li><li>If using full SenseMaker software, confirm subscription status (shared dependency with De-Professionalisation engagement).</li><li>Consider engaging The Cynefin Co. to review the signification framework before launch — their input on signifier ambiguity is valuable and adds credibility to the methodology.</li><li>Prepare participant information sheet: independence from easyJet, anonymisation process, how data will be used, right to withdraw, BALPA data protection compliance.</li></ul></div></div>
+
+<div class="phase"><div class="phase-header"><div class="phase-num">2</div><h4>Pilot Test</h4><span>Week 3</span></div><div class="phase-body"><ul><li>Run with 8–12 pilots across 2–3 bases before full launch.</li><li>Test for: does the prompt generate relevant stories? Are signifiers genuinely ambiguous (if everyone picks the same pole, the signifier is leading)? Does the flow feel comfortable and safe?</li><li>Check timing: target 8–12 minutes per story. Adjust signifier wording based on feedback — small changes can significantly affect where stories cluster.</li><li>Brief Company Council reps and base reps on the methodology and how to field questions from members.</li></ul></div></div>
+
+<div class="phase"><div class="phase-header"><div class="phase-num">3</div><h4>Launch and Collection</h4><span>Weeks 4–8 (offset from De-Professionalisation engagement by 2+ weeks)</span></div><div class="phase-body"><ul><li>Promote exclusively through BALPA channels: Company Council, base reps, BALPA newsletter, direct member communications. Do not allow easyJet to promote — this would compromise independence and trigger the "worried about consequences" suppression effect.</li><li>Member communication framing: "This is a BALPA safety investigation to understand what is actually causing stress at work — not a consultation exercise. Your story is protected. The results will be used to challenge easyJet under the HSE Management Standards."</li><li>Target 150–250 stories minimum for meaningful pattern analysis. Multiple stories per pilot are encouraged — different stories capture different stressors.</li><li>Monitor participation by base — low response from a specific base may indicate particularly low psychological safety there, or inadequate rep promotion. Investigate both possibilities.</li><li>Run a mid-point reminder at week 6, targeted at under-represented groups (FOs, specific bases).</li></ul></div></div>
+
+<div class="phase"><div class="phase-header"><div class="phase-num">4</div><h4>Analysis</h4><span>Weeks 9–11</span></div><div class="phase-body"><ul><li>Generate quantitative pattern maps: triad distributions, dyad histograms, stone placements, emotion selection frequencies, cross-correlations between signifiers.</li><li>Identify attractor patterns — where do stories cluster? What combinations of signifier responses repeat across multiple narrators?</li><li>Read narrative texts thematically: repeating language, situations, or experiences that the quantitative data points toward. If 40 pilots independently use words like "invisible," "pointless," or "unsafe to say," that language is evidence.</li><li>Conduct base and rank comparisons: where are patterns consistent across the fleet? Where do sharp differences emerge?</li><li>Cross-reference with the easyJet Info Return data: does the SenseMaker data explain the 90% MH LTA increase? Does it confirm the autonomy finding? Does it link the 2022 roster spike to a specific stress mechanism?</li></ul></div></div>
+
+<div class="phase"><div class="phase-header"><div class="phase-num">5</div><h4>Reporting and Use</h4><span>Week 12 onwards</span></div><div class="phase-body"><ul><li>Produce a pattern report for the Company Council — findings mapped standard-by-standard to the HSE Management Standards, with illustrative anonymised narratives for each.</li><li>Produce the formal gap analysis update for representations to easyJet management under SRSC Reg 4(1)(a): easyJet's existing gap analysis (January 2026) + SenseMaker narrative evidence = comprehensive case for systemic change.</li><li>If easyJet's response is inadequate, package for HSE complaint: quantitative signifier patterns + anonymised illustrative narratives + gap analysis against Management Standards + documentation of BALPA attempts to resolve.</li><li>Share a member summary — themes and what the CC is doing with findings. This is both ethically required (narrators deserve to know their stories were heard) and strategically important (demonstrates BALPA effectiveness).</li><li>Establish a baseline for intervention: if easyJet implements controls, a repeat engagement cycle can measure whether the patterns have shifted, standard by standard.</li></ul></div></div>
+
+<!-- SECTION 7: SEQUENCING -->
+<h2>7. Sequencing and Dependencies</h2>
+
+<div class="box box-blue">
+  <strong>Relationship to the De-Professionalisation Engagement</strong>
+  These two SenseMaker engagements are complementary but distinct. The de-professionalisation engagement captures professional judgement, autonomy, and the epistemic/safety dimension. This engagement captures the broader occupational health dimension mapped to the HSE Management Standards. The intersection at the <strong>Control standard</strong> is critical: the de-professionalisation investigation argues that management is removing pilots' professional autonomy — this engagement measures exactly the same phenomenon through the HSE lens. Two independent analytical frameworks providing convergent evidence is significantly stronger than one. Run this engagement second, at least two weeks after de-professionalisation, to avoid survey fatigue and maintain analytical distinctiveness.
+</div>
+
+<h3>Dependencies Checklist</h3>
+<ul class="checklist">
+  <li><strong>Confirm SenseMaker subscription status</strong> — shared dependency with de-professionalisation engagement. Contact The Cynefin Co. to confirm licensing and platform access.</li>
+  <li><strong>Engage The Cynefin Co. on signification framework review</strong> — their input on genuine ambiguity in triads is valuable before launch.</li>
+  <li><strong>Decide sequencing</strong> — run after de-professionalisation engagement, or concurrently with clearly distinct member communications?</li>
+  <li><strong>Agree launch timing with the full Company Council</strong> — ensure base reps are briefed and committed before public promotion begins.</li>
+  <li><strong>Agree data retention and anonymisation policy with BALPA</strong> — GDPR compliance for narrative data is essential before any story collection begins.</li>
+  <li><strong>Draft member communication</strong> — framing, independence assurance, purpose, anonymity, what happens with the data.</li>
+  <li><strong>Set up and test engagement on platform</strong> — including a pilot run with 8–12 CC members or trusted base reps.</li>
+  <li><strong>Set participation targets and monitoring milestones</strong> — 50 stories by week 2, 100 by week 4, 150+ by close.</li>
+  <li><strong>Plan story wall</strong> — anonymised narrative display for members, as with the de-professionalisation engagement. Normalises the conversation and breaks isolation.</li>
+  <li><strong>Schedule analysis and reporting dates</strong> — Company Council presentation date to work backward from.</li>
+</ul>
+
+<div class="footer">
+  BALPA easyJet Company Council · Project Atlas · Workplace Stress Investigation · SenseMaker Framework Draft v2 · March 2026<br>
+  Incorporates easyJet Info Return data (January 2026) and Project Atlas gap analysis findings<br>
+  BALPA Internal — not for external distribution without Company Council approval
+</div>
+
+</div>
+</body>
+</html>
